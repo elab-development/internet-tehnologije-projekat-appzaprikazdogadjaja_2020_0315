@@ -34,6 +34,9 @@ class EventSeeder extends Seeder
             );
         }
         Log::info('EventSeeder completed.');
+
+
+        Event::factory()->count(10)->create();
     }
 }
 
