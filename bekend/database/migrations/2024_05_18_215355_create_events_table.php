@@ -19,9 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
-            $table->foreignId('venue_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->foreignId('source_id')->constrained()->onDelete('cascade');
+          
             $table->string('url')->nullable(); 
             $table->timestamps();
         });
