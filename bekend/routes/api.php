@@ -18,22 +18,36 @@ use App\Http\Controllers\SourceController;
 |
 */
 
-
-
-
-Route::apiResource('sources', SourceController::class);
-
-Route::apiResource('categories', CategoryController::class);
-
-Route::apiResource('venues', VenueController::class);
-
-Route::apiResource('events', EventController::class);
-
+ 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+ 
+Route::middleware(['role:admin,user'])->group(function () {
+    Route::get('/events', [EventController::class, 'index']);
+    Route::get('/events/{id}', [EventController::class, 'show']);
+    Route::get('/categories', [EventController::class, 'index']);
+  
+    Route::get('/venues', [VenueController::class, 'index']);
 
-Route::middleware('auth:sanctum')->group(function () {
+
+
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('myProfile', [AuthController::class, 'myProfile']);
 });
 
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::post('/events', [EventController::class, 'store']);
+    Route::put('/events/{id}', [EventController::class, 'update']);
+    Route::delete('/events/{id}', [EventController::class, 'destroy']);
+
+    Route::apiResource('venues', VenueController::class)->except('index');
+
+
+    Route::apiResource('sources', SourceController::class);
+    Route::apiResource('categories', CategoryController::class);
+});
+
+Route::middleware(['role:user'])->group(function () {
+    
+});
