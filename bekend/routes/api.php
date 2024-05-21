@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SourceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +19,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 
+
+
+Route::apiResource('sources', SourceController::class);
 
 Route::apiResource('categories', CategoryController::class);
 
