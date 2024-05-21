@@ -33,6 +33,8 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'user' ,
+            
         ]);
 
         return response()->json(['message' => 'User registered successfully'], 201);
@@ -67,12 +69,18 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::user()->tokens()->delete();
-
-        return response()->json(['message' => 'Successfully logged out']);
+        $user = $request->user();
+        
+        if ($user) {
+            $user->currentAccessToken()->delete();
+            return response()->json(['message' => 'Successfully logged out'], 200);
+        }
+    
+        return response()->json(['message' => 'User not authenticated'], 401);
     }
+    
 
     /**
      * Get the authenticated user's profile.
