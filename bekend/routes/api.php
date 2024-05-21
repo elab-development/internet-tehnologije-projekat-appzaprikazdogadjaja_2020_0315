@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\VenueController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,6 +17,9 @@ use App\Http\Controllers\VenueController;
 |
 */
 
+
+
+Route::apiResource('categories', CategoryController::class);
 
 Route::apiResource('venues', VenueController::class);
 
