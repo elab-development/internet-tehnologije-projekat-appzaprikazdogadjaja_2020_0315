@@ -101,7 +101,7 @@ class EventScraper
             Log::info("Scraped event: " . $title);
 
             $venue = Venue::firstOrCreate(['name' => $venueName], [
-                'address' => 'Unknown address',
+                'address' => $venueName,
                 'city' => 'Belgrade',
                 'country' => 'Serbia',
             ]);

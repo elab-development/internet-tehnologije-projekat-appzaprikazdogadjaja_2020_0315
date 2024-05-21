@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Category;
+use App\Models\Source;
+use App\Models\Venue;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EventResource extends JsonResource
@@ -20,9 +23,9 @@ class EventResource extends JsonResource
             'description' => $this->description,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
-            'venue' => new VenueResource($this->whenLoaded('venue')),
-            'category' => new CategoryResource($this->whenLoaded('category')),
-            'source' => new SourceResource($this->whenLoaded('source')),
+            'venue' => new VenueResource(Venue::find($this->venue_id)),
+            'category' => new CategoryResource( Category::find($this->category_id) ),
+            'source' => new SourceResource(Source::find($this->source_id)),
             'url' => $this->url,
             'image' => $this->image,
         ];

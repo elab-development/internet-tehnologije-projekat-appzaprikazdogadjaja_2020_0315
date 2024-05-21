@@ -36,13 +36,8 @@ Route::middleware(['auth:sanctum', 'role:admin,user'])->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
 
 });
-
  
-
-Route::middleware(['auth:sanctum','role:admin'])->group(function () {
-    Route::post('/events', [EventController::class, 'store']);
-    Route::put('/events/{id}', [EventController::class, 'update']);
-    Route::delete('/events/{id}', [EventController::class, 'destroy']);
+Route::middleware(['auth:sanctum','role:admin'])->group(function () {    
     
     Route::apiResource('venues', VenueController::class)->except('index');
 
@@ -51,5 +46,8 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum','role:user'])->group(function () {
-    
+    Route::post('/events', [EventController::class, 'store']);
+
+    Route::put('/events/{id}', [EventController::class, 'update']);
+    Route::delete('/events/{id}', [EventController::class, 'destroy']);
 });
