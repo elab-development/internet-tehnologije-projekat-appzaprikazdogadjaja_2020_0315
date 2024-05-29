@@ -1,6 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './HomePage.css';
+import EventCard from './EventCard';
+import CategoryCard from './CategoryCard';
 
 const HomePage = () => {
     const [eventImages, setEventImages] = useState([]);
@@ -42,11 +45,12 @@ const HomePage = () => {
                 <h2>Upcoming Events</h2>
                 <div className="event-cards">
                     {eventImages.map((image, index) => (
-                        <div className="event-card" key={index}>
-                            <img src={image} alt={`Event ${index + 1}`} />
-                            <h3>Event Title {index + 1}</h3>
-                            <p>Event description goes here.</p>
-                        </div>
+                        <EventCard
+                            key={index}
+                            image={image}
+                            title={`Event Title ${index + 1}`}
+                            description="Event description goes here."
+                        />
                     ))}
                 </div>
             </section>
@@ -54,10 +58,11 @@ const HomePage = () => {
                 <h2>Categories</h2>
                 <div className="category-cards">
                     {categoryImages.map((image, index) => (
-                        <div className="category-card" key={index}>
-                            <img src={image} alt={`Category ${index + 1}`} />
-                            <h3>{['Music', 'Art', 'Sports'][index]}</h3>
-                        </div>
+                        <CategoryCard
+                            key={index}
+                            image={image}
+                            title={['Music', 'Art', 'Sports'][index]}
+                        />
                     ))}
                 </div>
             </section>
