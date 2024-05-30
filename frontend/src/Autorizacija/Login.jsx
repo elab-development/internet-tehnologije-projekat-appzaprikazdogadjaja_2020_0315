@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [email, setEmail] = useState('hammes.tillman@example.org');
     const [password, setPassword] = useState('password');
     const [error, setError] = useState('');
@@ -18,7 +17,7 @@ const Login = () => {
                 password
             });
             console.log('Login successful:', response.data);
-            // Handle successful login (e.g., save token, redirect, etc.)
+            onLogin(response.data.user,response.data.access_token);
         } catch (err) {
             console.error('Login failed:', err.response.data);
             setError('Invalid credentials. Please try again.');
