@@ -1,0 +1,26 @@
+.event-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-card h3 {
+    margin: 10px 0;
+    color: #4e4c67;
+}
+
+.event-card p {
+    margin: 5px 0;
+    color: #6e6b7b;
+}

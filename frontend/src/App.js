@@ -5,6 +5,8 @@ import HomePage from './Pocetna/HomePage';
 import Login from './Autorizacija/Login';
 import Register from './Autorizacija/Register';
 import Navbar from './Navigacija/Navbar';
+import Dogadjaji from './Dogadjaji/Dogadjaji';
+ 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +39,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/events" element={<Dogadjaji />} />
         </Routes>
       </div>
     </Router>
