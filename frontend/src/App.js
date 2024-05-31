@@ -6,6 +6,7 @@ import Login from './Autorizacija/Login';
 import Register from './Autorizacija/Register';
 import Navbar from './Navigacija/Navbar';
 import Dogadjaji from './Dogadjaji/Dogadjaji';
+import KreirajDogadjaj from './Dogadjaji/KreirajDogadjaj';
  
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/events" element={<Dogadjaji />} />
+          <Route path="/events/create" element={<KreirajDogadjaj />} />
+
         </Routes>
       </div>
     </Router>
