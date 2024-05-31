@@ -5,7 +5,7 @@ import Kartica from './Kartica';
 import ReactPaginate from 'react-paginate';
 
 const Dogadjaji = () => {
-    const { events, loading, error } = useDogadjaji();
+    const { events, setEvents, loading, error } = useDogadjaji();
     const [currentPage, setCurrentPage] = useState(0);
     const [filter, setFilter] = useState('');
     const eventsPerPage = 6;
@@ -17,6 +17,10 @@ const Dogadjaji = () => {
     const handleFilterChange = (e) => {
         setFilter(e.target.value);
         setCurrentPage(0);
+    };
+
+    const handleDeleteEvent = (id) => {
+        setEvents(prevEvents => prevEvents.filter(event => event.id !== id));
     };
 
     const filteredEvents = events.filter(event =>
@@ -43,7 +47,7 @@ const Dogadjaji = () => {
             />
             <div className="events-list">
                 {currentEvents.map((event) => (
-                    <Kartica key={event.id} event={event} />
+                    <Kartica key={event.id} event={event} onDelete={handleDeleteEvent} />
                 ))}
             </div>
             <ReactPaginate

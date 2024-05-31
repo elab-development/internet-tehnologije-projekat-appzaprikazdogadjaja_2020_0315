@@ -43,11 +43,12 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function () {
 
     Route::apiResource('sources', SourceController::class);
     Route::apiResource('categories', CategoryController::class);
+ 
 });
+
 
 Route::middleware(['auth:sanctum','role:user'])->group(function () {
     Route::post('/events', [EventController::class, 'store']);
-
-    Route::put('/events/{id}', [EventController::class, 'update']);
     Route::delete('/events/{id}', [EventController::class, 'destroy']);
+    Route::put('/events/{id}', [EventController::class, 'update']);
 });
