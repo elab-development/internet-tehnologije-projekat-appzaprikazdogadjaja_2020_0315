@@ -36,8 +36,8 @@ class EventController extends Controller
             'venue_id' => 'required|integer|exists:venues,id',
             'category_id' => 'required|integer|exists:categories,id',
             'source_id' => 'required|integer|exists:sources,id',
-            'url' => 'required|url',
-            'image' => 'nullable|url',
+            'url' => 'required|string',
+            'image' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -77,8 +77,8 @@ class EventController extends Controller
             'venue_id' => 'required|integer|exists:venues,id',
             'category_id' => 'required|integer|exists:categories,id',
             'source_id' => 'required|integer|exists:sources,id',
-            'url' => 'required|url',
-            'image' => 'nullable|url',
+            'url' => 'required|string',
+            'image' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {

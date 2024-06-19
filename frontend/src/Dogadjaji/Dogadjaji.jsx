@@ -3,12 +3,14 @@ import './Dogadjaji.css';
 import useDogadjaji from '../Kuke/useDogadjaji';
 import Kartica from './Kartica';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 const Dogadjaji = () => {
     const { events, setEvents, loading, error } = useDogadjaji();
     const [currentPage, setCurrentPage] = useState(0);
     const [filter, setFilter] = useState('');
     const eventsPerPage = 6;
+    const navigate = useNavigate();
 
     const handlePageClick = (data) => {
         setCurrentPage(data.selected);
@@ -21,6 +23,10 @@ const Dogadjaji = () => {
 
     const handleDeleteEvent = (id) => {
         setEvents(prevEvents => prevEvents.filter(event => event.id !== id));
+    };
+
+    const handleEditEvent = (id) => {
+        navigate(`/edit-event/${id}`);
     };
 
     const filteredEvents = events.filter(event =>
@@ -47,7 +53,7 @@ const Dogadjaji = () => {
             />
             <div className="events-list">
                 {currentEvents.map((event) => (
-                    <Kartica key={event.id} event={event} onDelete={handleDeleteEvent} />
+                    <Kartica key={event.id} event={event} onDelete={handleDeleteEvent} onEdit={handleEditEvent} />
                 ))}
             </div>
             <ReactPaginate

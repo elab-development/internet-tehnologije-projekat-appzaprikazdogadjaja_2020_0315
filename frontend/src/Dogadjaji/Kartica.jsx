@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './Kartica.css';
 
-const Kartica = ({ event, onDelete }) => {
+const Kartica = ({ event, onDelete, onEdit }) => {
     const handleDelete = async () => {
         const token = sessionStorage.getItem('access_token');
         try {
@@ -29,6 +29,7 @@ const Kartica = ({ event, onDelete }) => {
             <p><strong>Source:</strong> {event.source.name}</p>
             <p><strong>Start Date:</strong> {event.start_date}</p>
             <p><strong>End Date:</strong> {event.end_date}</p>
+            <button onClick={() => onEdit(event.id)} className="edit-button">Edit</button>
             <button onClick={handleDelete} className="delete-button">Delete</button>
         </div>
     );

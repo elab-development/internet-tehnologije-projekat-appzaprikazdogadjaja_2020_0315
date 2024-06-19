@@ -43,6 +43,9 @@ function App() {
           <Route path="/events" element={<Dogadjaji />} />
           <Route path="/events/create" element={<KreirajDogadjaj />} />
 
+
+
+          <Route path="/edit-event/:id" element={<KreirajDogadjaj />} />
         </Routes>
       </div>
     </Router>
