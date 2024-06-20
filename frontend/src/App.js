@@ -8,6 +8,7 @@ import Navbar from './Navigacija/Navbar';
 import Dogadjaji from './Dogadjaji/Dogadjaji';
 import KreirajDogadjaj from './Dogadjaji/KreirajDogadjaj';
 import AdminUsers from './Admin/AdminUsers';
+import AdminDashboard from './Admin/AdminDashboard';
  
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
 
 
           <Route path="/admin/users" element={<AdminUsers />} />
-
+          <Route path="/admin/dashboard" element={<AdminDashboard />} /> 
           <Route path="/edit-event/:id" element={<KreirajDogadjaj />} />
         </Routes>
       </div>

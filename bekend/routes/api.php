@@ -7,6 +7,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SourceController;
+use App\Http\Controllers\StatsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,7 +29,7 @@ Route::get('/events/{id}', [EventController::class, 'show']);
 Route::get('/categories', [EventController::class, 'index']);
 
 Route::get('/venues', [VenueController::class, 'index']);
-
+Route::get('/stats', [StatsController::class, 'statistike']);
 
 
 Route::middleware(['auth:sanctum', 'role:admin,user'])->group(function () {
