@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './AdminDashboard.css';   
+import './AdminDashboard.css';  // Dodajte CSS za dashboard
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState({});
@@ -44,7 +44,19 @@ const AdminDashboard = () => {
                 </div>
                 <div className="card">
                     <h3>Total Regular Users</h3>
-                    <p>{stats.total_users -stats.total_admins }</p>
+                    <p>{stats.total_users - stats.total_admins}</p>
+                </div>
+                <div className="card">
+                    <h3>Total Categories</h3>
+                    <p>{stats.total_categories}</p>
+                </div>
+                <div className="card">
+                    <h3>Total Events</h3>
+                    <p>{stats.total_events}</p>
+                </div>
+                <div className="card">
+                    <h3>Total Venues</h3>
+                    <p>{stats.total_venues}</p>
                 </div>
             </div>
         </div>

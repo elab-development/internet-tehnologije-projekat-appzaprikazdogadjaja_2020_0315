@@ -19,7 +19,11 @@ const Login = ({ onLogin }) => {
             });
             console.log('Login successful:', response.data);
             onLogin(response.data.user,response.data.access_token);
-            navigate("/events")
+            if(response.data.user.role=="admin"){
+                navigate("/admin/dashboard")
+            }else{
+                navigate("/events") 
+            }
         } catch (err) {
             console.error('Login failed:', err.response.data);
             setError('Invalid credentials. Please try again.');

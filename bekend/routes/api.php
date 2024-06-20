@@ -20,7 +20,7 @@ use App\Http\Controllers\StatsController;
 |
 */
 
- 
+Route::get('/events/stats', [EventController::class, 'statistike']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
  
@@ -56,9 +56,7 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function () {
     Route::get('/users', [AuthController::class, 'allUsers']);
 
  
-});
-
-
+}); 
 Route::middleware(['auth:sanctum','role:user'])->group(function () {
 
 });

@@ -9,6 +9,7 @@ import Dogadjaji from './Dogadjaji/Dogadjaji';
 import KreirajDogadjaj from './Dogadjaji/KreirajDogadjaj';
 import AdminUsers from './Admin/AdminUsers';
 import AdminDashboard from './Admin/AdminDashboard';
+import AdminEvent from './Admin/AdminEvent';
  
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path="/events/create" element={<KreirajDogadjaj />} />
 
 
+          <Route path="/admin/event" element={<AdminEvent />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} /> 
           <Route path="/edit-event/:id" element={<KreirajDogadjaj />} />

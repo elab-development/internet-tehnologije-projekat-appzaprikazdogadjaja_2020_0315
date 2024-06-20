@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Resources\EventResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
@@ -101,5 +102,31 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $event->delete();
         return response()->json(['message' => 'Event deleted successfully']);
+    }
+
+
+    public function statistike()
+    {
+        // Get the count of events for each category
+        $eventsByCategory = Event::select('category_id', DB::raw('count(*) as total'))
+                                  ->groupBy('category_id')
+                                  ->with('category')
+                                  ->get()
+                                  ->map(function($event) {
+                                      return [
+                                          'category' => $event->category->name,
+                                          'total' => $event->total
+                                      ];
+                                  });
+
+        // Get the count of events for each month
+        $eventsByMonth = Event::select(DB::raw('DATE_FORMAT(start_date, "%Y-%m") as month'), DB::raw('count(*) as total'))
+                              ->groupBy('month')
+                              ->get();
+
+        return response()->json([
+            'events_by_category' => $eventsByCategory,
+            'events_by_month' => $eventsByMonth
+        ]);
     }
 }
