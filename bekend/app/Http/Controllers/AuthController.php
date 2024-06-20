@@ -91,4 +91,26 @@ class AuthController extends Controller
     {
         return new UserResource(Auth::user());
     }
+    public function allUsers()
+    {
+        $users = User::all();
+        return UserResource::collection($users);
+    }
+
+    public function updateUserRole(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'role' => 'required|string|in:admin,user'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $user = User::findOrFail($id);
+        $user->role = $request->role;
+        $user->save();
+
+        return new UserResource($user);
+    }
 }

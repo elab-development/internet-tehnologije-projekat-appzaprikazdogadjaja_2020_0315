@@ -50,6 +50,9 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function () {
 
     Route::apiResource('sources', SourceController::class);
     Route::apiResource('categories', CategoryController::class);
+    Route::patch('/users/{id}/role', [AuthController::class, 'updateUserRole']);
+    Route::get('/users', [AuthController::class, 'allUsers']);
+
  
 });
 

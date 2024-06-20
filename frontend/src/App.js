@@ -7,6 +7,7 @@ import Register from './Autorizacija/Register';
 import Navbar from './Navigacija/Navbar';
 import Dogadjaji from './Dogadjaji/Dogadjaji';
 import KreirajDogadjaj from './Dogadjaji/KreirajDogadjaj';
+import AdminUsers from './Admin/AdminUsers';
  
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/events/create" element={<KreirajDogadjaj />} />
 
 
+          <Route path="/admin/users" element={<AdminUsers />} />
 
           <Route path="/edit-event/:id" element={<KreirajDogadjaj />} />
         </Routes>
