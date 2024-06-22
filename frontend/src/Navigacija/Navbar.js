@@ -9,7 +9,7 @@ const Navbar = ({ user, onLogout }) => {
     const handleLogout = async () => {
         try {
             const token = sessionStorage.getItem('access_token');
-            await axios.post('http://localhost:8000/api/logout', {}, {
+            await axios.post('http://127.0.0.1:8000/api/logout', {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -42,13 +42,31 @@ const Navbar = ({ user, onLogout }) => {
                             <Link to="/register">Register</Link>
                         </li>
                     </>
+                ) : user.role === 'admin' ? (
+                    <>
+                        <li>
+                            <Link to="/admin/dashboard">Admin Dashboard</Link>
+                        </li>
+                        <li>
+                            <Link to="/admin/users">Manage Users</Link>
+                        </li>
+                        <li>
+                            <Link to="/admin/event">Manage Events</Link>
+                        </li>
+                        <li>
+                            <span>Welcome, {user.name}</span>
+                        </li>
+                        <li>
+                            <button onClick={handleLogout}>Logout</button>
+                        </li>
+                    </>
                 ) : (
                     <>
                         <li>
                             <Link to="/events">Events</Link>
                         </li>
                         <li>
-                            <Link to="/events/create">Kreiraj</Link>
+                            <Link to="/events/create">Create Event</Link>
                         </li>
                         <li>
                             <span>Welcome, {user.name}</span>

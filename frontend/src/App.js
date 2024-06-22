@@ -10,7 +10,6 @@ import KreirajDogadjaj from './Dogadjaji/KreirajDogadjaj';
 import AdminUsers from './Admin/AdminUsers';
 import AdminDashboard from './Admin/AdminDashboard';
 import AdminEvent from './Admin/AdminEvent';
- 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,11 +45,16 @@ function App() {
           <Route path="/events" element={<Dogadjaji />} />
           <Route path="/events/create" element={<KreirajDogadjaj />} />
 
-
-          <Route path="/admin/event" element={<AdminEvent />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} /> 
-          <Route path="/edit-event/:id" element={<KreirajDogadjaj />} />
+          
+          <Route path="/edit-event/:id" element={<KreirajDogadjaj />} /> 
+          {user && user.role === 'admin' && (
+            <>
+              <Route path="/admin/event" element={<AdminEvent />} />
+              <Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+             
+            </>
+          )}
         </Routes>
       </div>
     </Router>
