@@ -3,7 +3,6 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-width: 300px;
     padding: 20px;
     text-align: left;
     margin-bottom: 20px;
@@ -23,4 +22,8 @@
 .event-card p {
     margin: 5px 0;
     color: #6e6b7b;
+}
+
+.event-details {
+    flex: 1;
 }

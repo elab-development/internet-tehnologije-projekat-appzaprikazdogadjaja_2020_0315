@@ -9,6 +9,7 @@ const Dogadjaji = () => {
     const { events, setEvents, loading, error } = useDogadjaji();
     const [currentPage, setCurrentPage] = useState(0);
     const [filter, setFilter] = useState('');
+    const [viewMode, setViewMode] = useState('card'); // New state for view mode
     const eventsPerPage = 6;
     const navigate = useNavigate();
 
@@ -51,9 +52,12 @@ const Dogadjaji = () => {
                 onChange={handleFilterChange}
                 className="filter-input"
             />
-            <div className="events-list">
+            <button onClick={() => setViewMode(viewMode === 'card' ? 'list' : 'card')} className="toggle-view-button">
+                Toggle View
+            </button>
+            <div className={viewMode === 'card' ? 'events-list card-view' : 'events-list list-view'}>
                 {currentEvents.map((event) => (
-                    <Kartica key={event.id} event={event} onDelete={handleDeleteEvent} onEdit={handleEditEvent} />
+                    <Kartica key={event.id} event={event} onDelete={handleDeleteEvent} onEdit={handleEditEvent} viewMode={viewMode} />
                 ))}
             </div>
             <ReactPaginate
