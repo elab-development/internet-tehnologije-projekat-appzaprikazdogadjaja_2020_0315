@@ -26,7 +26,8 @@ Route::post('login', [AuthController::class, 'login']);
  
 Route::get('/events', [EventController::class, 'index']);
 Route::get('/events/{id}', [EventController::class, 'show']);
-Route::get('/categories', [EventController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/events', [EventController::class, 'index']);
 
 Route::get('/venues', [VenueController::class, 'index']);
 Route::get('/stats', [StatsController::class, 'statistike']);
@@ -51,7 +52,7 @@ Route::middleware(['auth:sanctum','role:admin'])->group(function () {
     Route::apiResource('venues', VenueController::class)->except('index');
 
     Route::apiResource('sources', SourceController::class);
-    Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('categories', CategoryController::class)->except("index");
     Route::patch('/users/{id}/role', [AuthController::class, 'updateUserRole']);
     Route::get('/users', [AuthController::class, 'allUsers']);
 
