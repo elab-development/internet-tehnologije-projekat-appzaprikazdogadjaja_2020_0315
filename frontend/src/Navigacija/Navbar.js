@@ -51,7 +51,7 @@ const Navbar = ({ user, onLogout }) => {
                             <Link to="/admin/users">Manage Users</Link>
                         </li>
                         <li>
-                            <Link to="/admin/event">Manage Events</Link>
+                            <Link to="/admin/event"> EventStats</Link>
                         </li>
                         <li>
                             <span>Welcome, {user.name}</span>
